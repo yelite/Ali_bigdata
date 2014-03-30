@@ -1,8 +1,5 @@
 #coding=utf-8
 
-from datetime import datetime
-import logging
-
 from sqlalchemy import Column, Integer, Float, Date
 from sqlalchemy.ext.declarative import declarative_base
 

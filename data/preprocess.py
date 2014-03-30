@@ -1,9 +1,11 @@
 #coding=utf-8
 
-import sqlite3, csv, codecs
+import csv
+import codecs
 from datetime import date
+
 from db import Session
-from model import Data, Customer, Brand
+from model import Data, Customer
 
 
 def replace_chn_char():

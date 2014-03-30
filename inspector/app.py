@@ -1,8 +1,10 @@
 #coding=utf-8
 
 from flask import Flask, abort
+
 from db import Session
-from model import Brand, Customer
+from model import Brand
+
 
 app = Flask(__name__)
 

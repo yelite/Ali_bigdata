@@ -1,8 +1,10 @@
 #coding=utf-8
 
 from datetime import date
+
 from db import Session
 from model import Data, Customer, Brand
+
 
 breaks = [date(2012, 4, 15),
           date(2012, 5, 15),
@@ -66,9 +68,6 @@ def train_customer(customer):
     for i in range(3):
         score += 0.334 * (data[i+1][1])/(data[i][0]+CUR_COE*data[i+1][0]+ZERO_MOD)
     customer.click_purchase = score
-
-
-
 
 
 def train():
