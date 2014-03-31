@@ -2,21 +2,10 @@
 
 from sqlalchemy import Column, Integer, Float, Date
 from sqlalchemy.ext.declarative import declarative_base
+from helper import memoized
 
 
 Base = declarative_base()
-
-
-class Data(Base):
-    __tablename__ = 'data'
-
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, index=True, nullable=False)
-    brand_id = Column(Integer, index=True, nullable=False)
-    time = Column(Date, index=True, nullable=False)
-    action = Column(Integer, nullable=False)
-
-    __mapper_args__ = {'order_by': id.desc()}
 
 
 class Customer(Base):
@@ -36,6 +25,12 @@ class Brand(Base):
     click_purchase = Column(Float, default=0.0)
     purchase_purchase = Column(Float, default=0.0)
     cart_purchase = Column(Float, default=0.0)
+
+    @classmethod
+    @memoized
+    def get_by_id(cls, session, id):
+        return session.query(cls).get(id)
+
 
 
 

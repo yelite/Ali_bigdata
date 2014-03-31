@@ -3,7 +3,10 @@
 from datetime import date
 
 from db import Session
-from model import Data, Customer, Brand
+from models.base import Data
+from model import Customer, Brand
+
+from helper import record_aggregate
 
 
 breaks = [date(2012, 4, 15),
@@ -11,13 +14,6 @@ breaks = [date(2012, 4, 15),
           date(2012, 6, 15),
           date(2012, 7, 15),
           date(2012, 8, 15), ]
-
-
-def record_aggregate(records):
-    rv = [0] * 4
-    for i in records:
-        rv[i.action] += 1
-    return rv
 
 
 session = Session()
