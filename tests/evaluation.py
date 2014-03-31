@@ -18,6 +18,7 @@ def read_result():
         brands = map(int, brands.split(','))
         count += len(brands)
         rv[int(name)] = set(brands)
+    f.close()
     return count, rv
 
 

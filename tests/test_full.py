@@ -2,15 +2,17 @@
 
 from datetime import date
 
-from model import Customer
-from predict import predict
+from models.Trivial.model import Customer
 from evaluation import evaluate
+from models.Trivial.predict import predict
 from report import report
 
+from models import base
+
+base.static_data = base.StaticData(test=True)
 
 def test_full_training(session):
-    c = session.query(Customer).all()
-    rv = map(lambda x: predict(x, date(2012, 7, 16)), c)
+    rv = predict(date(2012, 7, 16))
     report_data = evaluate(rv)
     print(report(report_data, flag='Full'))
 

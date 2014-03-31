@@ -3,7 +3,7 @@
 from datetime import date
 
 from _db import Session
-from model import Data, Customer, Brand
+from models.Trivial.model import Data, Customer, Brand
 
 
 breaks = [date(2012, 4, 15),
