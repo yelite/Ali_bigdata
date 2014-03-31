@@ -3,7 +3,7 @@
 import sys
 
 from db import engine, Session
-from model import Base, Customer, Brand
+from models.Trivial.model import Base, Customer, Brand
 
 
 def create():

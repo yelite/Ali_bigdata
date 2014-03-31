@@ -2,9 +2,9 @@
 
 import time
 
-from model import Customer
+from models.Trivial.model import Customer
 from db import Session
-from predict import predict
+from models.Trivial.predict import predict
 
 
 session = Session()
@@ -13,6 +13,8 @@ session = Session()
 def write_file(name, rv):
     f = open('output/{}.txt'.format(name), mode='w')
     for l in rv:
+        if not l[1]:
+            continue
         name = map(str, l[1])
         id = str(l[0])
         f.write(id+'\t'+','.join(name))
@@ -21,14 +23,16 @@ def write_file(name, rv):
 
 
 def main():
-    c = session.query(Customer).all()
-    # p = Pool(processes=4)
-    rv = map(predict, c)
-    # p.close()
-    # p.join()
+    rv = predict()
+
+    p_count = 0
+    for id, brands in rv:
+        p_count += len(brands)
+
+    print('Prediction: {}'.format(p_count))
 
     timestamp = time.strftime('%m_%d_%H_%M', time.localtime())
-    write_file(timestamp, rv)
+    write_file(timestamp+'_'+str(p_count), rv)
 
 
 if __name__ == '__main__':
