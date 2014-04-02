@@ -1,11 +1,12 @@
 #coding=utf-8
 
 
-from sqlalchemy import Column, Integer, Float, Date
-from sqlalchemy.ext.declarative import declarative_base
-from helper import root_dic
-from db import Session
 import os
+
+from sqlalchemy import Column, Integer, Date
+from sqlalchemy.ext.declarative import declarative_base
+
+from helper import root_dic
 
 
 Base = declarative_base()
@@ -20,7 +21,6 @@ class Data(Base):
     time = Column(Date, index=True, nullable=False)
     action = Column(Integer, nullable=False)
 
-    __mapper_args__ = {'order_by': id.desc()}
 
 
 class StaticData:

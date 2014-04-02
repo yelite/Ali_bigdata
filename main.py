@@ -3,11 +3,9 @@
 import time
 
 from models.Trivial.model import Customer
-from db import Session
-from models.Trivial.predict import predict
+from db import s
+from models import models
 
-
-session = Session()
 
 
 def write_file(name, rv):
@@ -23,7 +21,8 @@ def write_file(name, rv):
 
 
 def main():
-    rv = predict()
+    t = models['Causal']
+    rv = t.Predictor(s, test=True).predict()
 
     p_count = 0
     for id, brands in rv:
