@@ -5,7 +5,8 @@ import codecs
 from datetime import date
 
 from db import Session
-from model import Data, Customer
+from base import Data
+from models.Trivial.model import Customer
 
 
 def replace_chn_char():
@@ -63,5 +64,23 @@ def generate_test_data():
     f.close()
 
 
+def _generate_user_brand_data(c):
+    b = SESSION.execute('SELECT DISTINCT brand_id FROM DATA WHERE user_id=:id '
+                        'and time<"2012-08-16"',
+                        {'id': c.id}).fetchall()
+    b = map(lambda x: x[0], b)
+    return c.id, b
+
+def generate_user_brand_data():
+    c = SESSION.query(Customer).all()
+    rv = map(_generate_user_brand_data, c)
+    f = open('user_brand.txt', mode='w')
+    for l in rv:
+        name = map(str, l[1])
+        id = str(l[0])
+        f.write(id+'\t'+','.join(name))
+        f.write('\n')
+    f.close()
+
 if __name__ == '__main__':
-    generate_test_data()
+    generate_user_brand_data()

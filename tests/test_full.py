@@ -2,17 +2,14 @@
 
 from datetime import date
 
-from models.Trivial.model import Customer
+from _db import s
 from evaluation import evaluate
-from models.Trivial.predict import predict
+from models import models
 from report import report
 
-from models import base
-
-base.static_data = base.StaticData(test=True)
-
 def test_full_training(session):
-    rv = predict(date(2012, 7, 16))
+    t = models['Causal']
+    rv = t.Predictor(s, test=True).predict()
     report_data = evaluate(rv)
     print(report(report_data, flag='Full'))
 

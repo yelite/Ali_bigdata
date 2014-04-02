@@ -1,32 +1,27 @@
 #coding=utf-8
 
-from datetime import date
+
+from datetime import date, timedelta
 
 from _db import Session
-from models.Trivial.model import Data, Customer, Brand
+from models.Trivial.model import Customer, Brand
+from base import Data
+from helper import record_aggregate
 
 
-breaks = [date(2012, 4, 15),
-          date(2012, 5, 15),
-          date(2012, 6, 15),
-          date(2012, 7, 15), ]
-
-
-def record_aggregate(records):
-    rv = [0] * 4
-    for i in records:
-        rv[i.action] += 1
-    return rv
+div_n = 13
+breaks = [date(2012, 4, 15) + i*timedelta(7) for i in range(div_n+1)]
+mean_coe = 1.0/(div_n-1)
+# TODO need an elegant way to handle it
 
 
 session = Session()
 
-ZERO_MOD = 0.1
-CUR_COE = 0.7
-PP_COE = 0.2
+CUR_COE = 1.1
+PP_COE = 0.4
 def train_brand(brand):
     records = list()
-    for i in range(3):
+    for i in range(div_n):
         records.append(session.query(Data).filter(Data.brand_id == brand.id,
                                                   Data.time >= breaks[i],
                                                   Data.time < breaks[i + 1]).all())
@@ -36,16 +31,18 @@ def train_brand(brand):
 
     score = 0
     pp = 0
-    for i in range(2):
-        score += 0.5 * (data[i+1][1])/(data[i][0]+CUR_COE*data[i+1][0]+ZERO_MOD)
-        pp += 0.5 * PP_COE * (data[i+1][1])/(data[i][1]+ZERO_MOD)
+    for i in range(div_n-1):
+        if data[i][1] == 0 or data[i][0]+data[i+1][0] == 0:
+            continue
+        score += mean_coe * (data[i+1][1])/(data[i][0]+CUR_COE*data[i+1][0])
+        pp += mean_coe * PP_COE * (data[i+1][1])/(data[i][1])
     brand.click_purchase = score
     brand.purchase_purchase = pp
 
 
 def train_customer(customer):
     records = list()
-    for i in range(3):
+    for i in range(div_n):
         records.append(session.query(Data).filter(Data.user_id == customer.id,
                                                   Data.time >= breaks[i],
                                                   Data.time < breaks[i + 1]).all())
@@ -61,11 +58,13 @@ def train_customer(customer):
             if j.action == 1 and j.brand_id not in unique_dict:
                 p_strength += 1
                 unique_dict[j.brand_id] = 0
-    customer.purchase = min(s/3.0, p_strength/1.5)
+    customer.purchase = min(s/3.5, p_strength/1.4)
 
     score = 0
-    for i in range(2):
-        score += 0.5 * (data[i+1][1])/(data[i][0]+CUR_COE*data[i+1][0]+ZERO_MOD)
+    for i in range(div_n-1):
+        if data[i][0]+data[i+1][0] == 0:
+            continue
+        score += mean_coe * (data[i+1][1])/(data[i][0]+CUR_COE*data[i+1][0])
     customer.click_purchase = score
 
 
@@ -82,4 +81,3 @@ def train():
 
 if __name__ == "__main__":
     train()
-

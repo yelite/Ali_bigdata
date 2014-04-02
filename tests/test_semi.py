@@ -2,13 +2,11 @@
 
 from datetime import date
 
-from models.Trivial.model import Customer
+import base
 from evaluation import evaluate
 from models.Trivial.predict import predict
 from report import report
 
-
-from models import base
 
 base.static_data = base.StaticData(test=True)
 

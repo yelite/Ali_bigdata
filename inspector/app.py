@@ -3,7 +3,7 @@
 from flask import Flask, abort
 
 from db import Session
-from model import Brand
+from models.Trivial.model import Brand
 
 
 app = Flask(__name__)

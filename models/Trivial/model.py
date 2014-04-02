@@ -1,7 +1,8 @@
 #coding=utf-8
 
-from sqlalchemy import Column, Integer, Float, Date
+from sqlalchemy import Column, Integer, Float
 from sqlalchemy.ext.declarative import declarative_base
+
 from helper import memoized
 
 

@@ -10,3 +10,4 @@ DB_FILE = os.path.join(MAIN_DIC, '_data.db')
 
 engine = create_engine('sqlite:///{}'.format(DB_FILE))
 Session = sessionmaker(bind=engine)
+s = Session()

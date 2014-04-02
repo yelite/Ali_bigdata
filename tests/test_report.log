@@ -1,0 +1,763 @@
+####################
+Test - Semi - 03/30 22:12
+####################
+Prediction: 1826	Reality: 1378	Hit: 81.0
+Precision: 0.0443592552026	Recall: 0.0587808417997	F1-Score: 0.0505617977528
+
+########################################
+Test - Semi - 03/30 22:42
+####################
+Prediction: 1826	Reality: 1378	Hit: 85.0
+Precision: 0.0465498357065	Recall: 0.0616835994194	F1-Score: 0.0530586766542
+
+########################################
+Test - Semi - 03/30 22:56
+####################
+Prediction: 1826	Reality: 1378	Hit: 85.0
+Precision: 4.65%	Recall: 6.17%	F1-Score: 5.31%
+
+########################################
+Test - Semi - 03/30 23:00
+####################
+Prediction: 1826	Reality: 1378	Hit: 85.0
+Precision: 4.65%	Recall: 6.17%	F1-Score: 5.31%
+
+########################################
+Test - Semi - 03/30 23:03
+####################
+Prediction: 1826	Reality: 1378	Hit: 79.0
+Precision: 4.33%	Recall: 5.73%	F1-Score: 4.93%
+
+########################################
+Test - Semi - 03/30 23:11
+####################
+Prediction: 1826	Reality: 1378	Hit: 84.0
+Precision: 4.60%	Recall: 6.10%	F1-Score: 5.24%
+
+########################################
+Test - Full - 03/30 23:15
+####################
+Prediction: 1931	Reality: 1378	Hit: 95.0
+Precision: 4.92%	Recall: 6.89%	F1-Score: 5.74%
+
+########################################
+Test - Semi - 03/30 23:22
+####################
+Prediction: 1826	Reality: 1378	Hit: 82.0
+Precision: 4.49%	Recall: 5.95%	F1-Score: 5.12%
+
+########################################
+Test - Semi - 03/30 23:25
+####################
+Prediction: 1826	Reality: 1378	Hit: 85.0
+Precision: 4.65%	Recall: 6.17%	F1-Score: 5.31%
+
+########################################
+Test - Semi - 03/30 23:28
+####################
+Prediction: 1826	Reality: 1378	Hit: 85.0
+Precision: 4.65%	Recall: 6.17%	F1-Score: 5.31%
+
+########################################
+Test - Semi - 03/30 23:34
+####################
+Prediction: 248	Reality: 1378	Hit: 22.0
+Precision: 8.87%	Recall: 1.60%	F1-Score: 2.71%
+
+########################################
+Test - Semi - 03/30 23:37
+####################
+Prediction: 414	Reality: 1378	Hit: 29.0
+Precision: 7.00%	Recall: 2.10%	F1-Score: 3.24%
+
+########################################
+Test - Semi - 03/30 23:40
+####################
+Prediction: 783	Reality: 1378	Hit: 48.0
+Precision: 6.13%	Recall: 3.48%	F1-Score: 4.44%
+
+########################################
+Test - Full - 03/30 23:44
+####################
+Prediction: 762	Reality: 1378	Hit: 47.0
+Precision: 6.17%	Recall: 3.41%	F1-Score: 4.39%
+
+########################################
+Test - Semi - 03/30 23:46
+####################
+Prediction: 944	Reality: 1378	Hit: 57.0
+Precision: 6.04%	Recall: 4.14%	F1-Score: 4.91%
+
+########################################
+Test - Semi - 03/30 23:49
+####################
+Prediction: 1436	Reality: 1378	Hit: 65.0
+Precision: 4.53%	Recall: 4.72%	F1-Score: 4.62%
+
+########################################
+Test - Full - 03/30 23:51
+####################
+Prediction: 1277	Reality: 1378	Hit: 62.0
+Precision: 4.86%	Recall: 4.50%	F1-Score: 4.67%
+
+########################################
+Test - Full - 03/30 23:54
+####################
+Prediction: 1263	Reality: 1378	Hit: 65.0
+Precision: 5.15%	Recall: 4.72%	F1-Score: 4.92%
+
+########################################
+Test - Semi - 03/30 23:56
+####################
+Prediction: 1267	Reality: 1378	Hit: 61.0
+Precision: 4.81%	Recall: 4.43%	F1-Score: 4.61%
+
+########################################
+Test - Semi - 03/30 23:59
+####################
+Prediction: 1373	Reality: 1378	Hit: 68.0
+Precision: 4.95%	Recall: 4.93%	F1-Score: 4.94%
+
+########################################
+Test - Semi - 03/31 00:02
+####################
+Prediction: 1410	Reality: 1378	Hit: 70.0
+Precision: 4.96%	Recall: 5.08%	F1-Score: 5.02%
+
+########################################
+Test - Full - 03/31 00:04
+####################
+Prediction: 1414	Reality: 1378	Hit: 73.0
+Precision: 5.16%	Recall: 5.30%	F1-Score: 5.23%
+
+########################################
+Test - Semi - 03/31 00:08
+####################
+Prediction: 1408	Reality: 1378	Hit: 71.0
+Precision: 5.04%	Recall: 5.15%	F1-Score: 5.10%
+
+########################################
+Test - Semi - 03/31 00:10
+####################
+Prediction: 1636	Reality: 1378	Hit: 73.0
+Precision: 4.46%	Recall: 5.30%	F1-Score: 4.84%
+
+########################################
+Test - Semi - 03/31 00:12
+####################
+Prediction: 1503	Reality: 1378	Hit: 71.0
+Precision: 4.72%	Recall: 5.15%	F1-Score: 4.93%
+
+########################################
+Test - Semi - 03/31 00:14
+####################
+Prediction: 1441	Reality: 1378	Hit: 70.0
+Precision: 4.86%	Recall: 5.08%	F1-Score: 4.97%
+
+########################################
+Test - Semi - 03/31 00:16
+####################
+Prediction: 2477	Reality: 1378	Hit: 38.0
+Precision: 1.53%	Recall: 2.76%	F1-Score: 1.97%
+
+########################################
+Test - Semi - 03/31 00:19
+####################
+Prediction: 2708	Reality: 1378	Hit: 79.0
+Precision: 2.92%	Recall: 5.73%	F1-Score: 3.87%
+
+########################################
+Test - Semi - 03/31 00:25
+####################
+Prediction: 1546	Reality: 1378	Hit: 73.0
+Precision: 4.72%	Recall: 5.30%	F1-Score: 4.99%
+
+########################################
+Test - Semi - 03/31 00:27
+####################
+Prediction: 1589	Reality: 1378	Hit: 73.0
+Precision: 4.59%	Recall: 5.30%	F1-Score: 4.92%
+
+########################################
+Test - Semi - 03/31 00:30
+####################
+Prediction: 1418	Reality: 1378	Hit: 69.0
+Precision: 4.87%	Recall: 5.01%	F1-Score: 4.94%
+
+########################################
+Test - Semi - 03/31 00:32
+####################
+Prediction: 1287	Reality: 1378	Hit: 67.0
+Precision: 5.21%	Recall: 4.86%	F1-Score: 5.03%
+
+########################################
+Test - Semi - 03/31 00:34
+####################
+Prediction: 1226	Reality: 1378	Hit: 65.0
+Precision: 5.30%	Recall: 4.72%	F1-Score: 4.99%
+
+########################################
+Test - Semi - 03/31 00:36
+####################
+Prediction: 1294	Reality: 1378	Hit: 67.0
+Precision: 5.18%	Recall: 4.86%	F1-Score: 5.01%
+
+########################################
+Test - Semi - 03/31 00:39
+####################
+Prediction: 1320	Reality: 1378	Hit: 67.0
+Precision: 5.08%	Recall: 4.86%	F1-Score: 4.97%
+
+########################################
+Test - Semi - 03/31 00:44
+####################
+Prediction: 1375	Reality: 1378	Hit: 66.0
+Precision: 4.80%	Recall: 4.79%	F1-Score: 4.79%
+
+########################################
+Test - Semi - 03/31 00:46
+####################
+Prediction: 1453	Reality: 1378	Hit: 72.0
+Precision: 4.96%	Recall: 5.22%	F1-Score: 5.09%
+
+########################################
+Test - Semi - 03/31 00:49
+####################
+Prediction: 1495	Reality: 1378	Hit: 75.0
+Precision: 5.02%	Recall: 5.44%	F1-Score: 5.22%
+
+########################################
+Test - Semi - 03/31 00:51
+####################
+Prediction: 1479	Reality: 1378	Hit: 74.0
+Precision: 5.00%	Recall: 5.37%	F1-Score: 5.18%
+
+########################################
+Test - Semi - 03/31 00:54
+####################
+Prediction: 1479	Reality: 1378	Hit: 71.0
+Precision: 4.80%	Recall: 5.15%	F1-Score: 4.97%
+
+########################################
+Test - Semi - 03/31 00:57
+####################
+Prediction: 1598	Reality: 1378	Hit: 75.0
+Precision: 4.69%	Recall: 5.44%	F1-Score: 5.04%
+
+########################################
+Test - Semi - 03/31 00:59
+####################
+Prediction: 1474	Reality: 1378	Hit: 72.0
+Precision: 4.88%	Recall: 5.22%	F1-Score: 5.05%
+
+########################################
+Test - Semi - 03/31 01:02
+####################
+Prediction: 1607	Reality: 1378	Hit: 76.0
+Precision: 4.73%	Recall: 5.52%	F1-Score: 5.09%
+
+########################################
+Test - Semi - 03/31 01:04
+####################
+Prediction: 1613	Reality: 1378	Hit: 74.0
+Precision: 4.59%	Recall: 5.37%	F1-Score: 4.95%
+
+########################################
+Test - Semi - 03/31 01:06
+####################
+Prediction: 1528	Reality: 1378	Hit: 72.0
+Precision: 4.71%	Recall: 5.22%	F1-Score: 4.96%
+
+########################################
+Test - Semi - 03/31 01:09
+####################
+Prediction: 1637	Reality: 1378	Hit: 76.0
+Precision: 4.64%	Recall: 5.52%	F1-Score: 5.04%
+
+########################################
+Test - Semi - 03/31 11:37
+####################
+Prediction: 1707	Reality: 1378	Hit: 1194.0
+Precision: 69.95%	Recall: 86.65%	F1-Score: 77.41%
+
+########################################
+Test - Semi - 03/31 23:42
+####################
+Prediction: 1624	Reality: 1378	Hit: 80.0
+Precision: 4.93%	Recall: 5.81%	F1-Score: 5.33%
+
+########################################
+Test - Semi - 04/01 00:04
+####################
+Prediction: 1684	Reality: 1378	Hit: 81.0
+Precision: 4.81%	Recall: 5.88%	F1-Score: 5.29%
+
+########################################
+Test - Semi - 04/01 00:08
+####################
+Prediction: 1624	Reality: 1378	Hit: 80.0
+Precision: 4.93%	Recall: 5.81%	F1-Score: 5.33%
+
+########################################
+Test - Semi - 04/01 00:55
+####################
+Prediction: 1824	Reality: 1378	Hit: 76.0
+Precision: 4.17%	Recall: 5.52%	F1-Score: 4.75%
+
+########################################
+Test - Semi - 04/01 00:57
+####################
+Prediction: 2381	Reality: 1378	Hit: 84.0
+Precision: 3.53%	Recall: 6.10%	F1-Score: 4.47%
+
+########################################
+Test - Semi - 04/01 00:59
+####################
+Prediction: 2107	Reality: 1378	Hit: 78.0
+Precision: 3.70%	Recall: 5.66%	F1-Score: 4.48%
+
+########################################
+Test - Semi - 04/01 01:00
+####################
+Prediction: 1613	Reality: 1378	Hit: 71.0
+Precision: 4.40%	Recall: 5.15%	F1-Score: 4.75%
+
+########################################
+Test - Semi - 04/01 01:02
+####################
+Prediction: 1648	Reality: 1378	Hit: 69.0
+Precision: 4.19%	Recall: 5.01%	F1-Score: 4.56%
+
+########################################
+Test - Semi - 04/01 01:04
+####################
+Prediction: 2019	Reality: 1378	Hit: 75.0
+Precision: 3.71%	Recall: 5.44%	F1-Score: 4.42%
+
+########################################
+Test - Full - 04/01 01:06
+####################
+Prediction: 2019	Reality: 1378	Hit: 75.0
+Precision: 3.71%	Recall: 5.44%	F1-Score: 4.42%
+
+########################################
+Test - Full - 04/01 01:08
+####################
+Prediction: 1876	Reality: 1378	Hit: 74.0
+Precision: 3.94%	Recall: 5.37%	F1-Score: 4.55%
+
+########################################
+Test - Full - 04/01 01:10
+####################
+Prediction: 1821	Reality: 1378	Hit: 73.0
+Precision: 4.01%	Recall: 5.30%	F1-Score: 4.56%
+
+########################################
+Test - Full - 04/01 01:12
+####################
+Prediction: 1914	Reality: 1378	Hit: 79.0
+Precision: 4.13%	Recall: 5.73%	F1-Score: 4.80%
+
+########################################
+Test - Full - 04/01 18:23
+####################
+Prediction: 2426	Reality: 1378	Hit: 96.0
+Precision: 3.96%	Recall: 6.97%	F1-Score: 5.05%
+
+########################################
+Test - Full - 04/01 18:25
+####################
+Prediction: 2003	Reality: 1378	Hit: 87.0
+Precision: 4.34%	Recall: 6.31%	F1-Score: 5.15%
+
+########################################
+Test - Full - 04/01 18:27
+####################
+Prediction: 1835	Reality: 1378	Hit: 82.0
+Precision: 4.47%	Recall: 5.95%	F1-Score: 5.10%
+
+########################################
+Test - Full - 04/01 18:29
+####################
+Prediction: 2389	Reality: 1378	Hit: 98.0
+Precision: 4.10%	Recall: 7.11%	F1-Score: 5.20%
+
+########################################
+Test - Full - 04/01 18:31
+####################
+Prediction: 2114	Reality: 1378	Hit: 89.0
+Precision: 4.21%	Recall: 6.46%	F1-Score: 5.10%
+
+########################################
+Test - Semi - 04/01 18:31
+####################
+Prediction: 2114	Reality: 1378	Hit: 89.0
+Precision: 4.21%	Recall: 6.46%	F1-Score: 5.10%
+
+########################################
+Test - Semi - 04/01 18:33
+####################
+Prediction: 1661	Reality: 1378	Hit: 76.0
+Precision: 4.58%	Recall: 5.52%	F1-Score: 5.00%
+
+########################################
+Test - Full - 04/01 18:33
+####################
+Prediction: 1661	Reality: 1378	Hit: 76.0
+Precision: 4.58%	Recall: 5.52%	F1-Score: 5.00%
+
+########################################
+Test - Full - 04/01 18:41
+####################
+Prediction: 2392	Reality: 1378	Hit: 89.0
+Precision: 3.72%	Recall: 6.46%	F1-Score: 4.72%
+
+########################################
+Test - Full - 04/01 18:44
+####################
+Prediction: 1853	Reality: 1378	Hit: 76.0
+Precision: 4.10%	Recall: 5.52%	F1-Score: 4.70%
+
+########################################
+Test - Full - 04/02 00:27
+####################
+Prediction: 152	Reality: 1378	Hit: 16.0
+Precision: 10.53%	Recall: 1.16%	F1-Score: 2.09%
+
+########################################
+Test - Full - 04/02 00:29
+####################
+Prediction: 723	Reality: 1378	Hit: 45.0
+Precision: 6.22%	Recall: 3.27%	F1-Score: 4.28%
+
+########################################
+Test - Full - 04/02 00:30
+####################
+Prediction: 1660	Reality: 1378	Hit: 76.0
+Precision: 4.58%	Recall: 5.52%	F1-Score: 5.00%
+
+########################################
+Test - Full - 04/02 00:31
+####################
+Prediction: 1589	Reality: 1378	Hit: 73.0
+Precision: 4.59%	Recall: 5.30%	F1-Score: 4.92%
+
+########################################
+Test - Full - 04/02 00:33
+####################
+Prediction: 1986	Reality: 1378	Hit: 78.0
+Precision: 3.93%	Recall: 5.66%	F1-Score: 4.64%
+
+########################################
+Test - Full - 04/02 00:37
+####################
+Prediction: 1986	Reality: 1378	Hit: 78.0
+Precision: 3.93%	Recall: 5.66%	F1-Score: 4.64%
+
+########################################
+Test - Full - 04/02 00:38
+####################
+Prediction: 1311	Reality: 1378	Hit: 71.0
+Precision: 5.42%	Recall: 5.15%	F1-Score: 5.28%
+
+########################################
+Test - Full - 04/02 00:49
+####################
+Prediction: 1379	Reality: 1378	Hit: 72.0
+Precision: 5.22%	Recall: 5.22%	F1-Score: 5.22%
+
+########################################
+Test - Full - 04/02 00:50
+####################
+Prediction: 1604	Reality: 1378	Hit: 77.0
+Precision: 4.80%	Recall: 5.59%	F1-Score: 5.16%
+
+########################################
+Test - Full - 04/02 00:52
+####################
+Prediction: 1482	Reality: 1378	Hit: 76.0
+Precision: 5.13%	Recall: 5.52%	F1-Score: 5.31%
+
+########################################
+Test - Full - 04/02 00:53
+####################
+Prediction: 1502	Reality: 1378	Hit: 76.0
+Precision: 5.06%	Recall: 5.52%	F1-Score: 5.28%
+
+########################################
+Test - Full - 04/02 00:56
+####################
+Prediction: 1554	Reality: 1378	Hit: 78.0
+Precision: 5.02%	Recall: 5.66%	F1-Score: 5.32%
+
+########################################
+Test - Full - 04/02 00:57
+####################
+Prediction: 2222	Reality: 1378	Hit: 83.0
+Precision: 3.74%	Recall: 6.02%	F1-Score: 4.61%
+
+########################################
+Test - Full - 04/02 00:58
+####################
+Prediction: 2585	Reality: 1378	Hit: 88.0
+Precision: 3.40%	Recall: 6.39%	F1-Score: 4.44%
+
+########################################
+Test - Full - 04/02 01:00
+####################
+Prediction: 2585	Reality: 1378	Hit: 89.0
+Precision: 3.44%	Recall: 6.46%	F1-Score: 4.49%
+
+########################################
+Test - Full - 04/02 01:05
+####################
+Prediction: 1891	Reality: 1378	Hit: 79.0
+Precision: 4.18%	Recall: 5.73%	F1-Score: 4.83%
+
+########################################
+Test - Full - 04/02 01:07
+####################
+Prediction: 1997	Reality: 1378	Hit: 86.0
+Precision: 4.31%	Recall: 6.24%	F1-Score: 5.10%
+
+########################################
+Test - Full - 04/02 01:08
+####################
+Prediction: 1986	Reality: 1378	Hit: 85.0
+Precision: 4.28%	Recall: 6.17%	F1-Score: 5.05%
+
+########################################
+Test - Full - 04/02 01:09
+####################
+Prediction: 2013	Reality: 1378	Hit: 85.0
+Precision: 4.22%	Recall: 6.17%	F1-Score: 5.01%
+
+########################################
+Test - Full - 04/02 01:10
+####################
+Prediction: 1759	Reality: 1378	Hit: 82.0
+Precision: 4.66%	Recall: 5.95%	F1-Score: 5.23%
+
+########################################
+Test - Full - 04/02 01:11
+####################
+Prediction: 1774	Reality: 1378	Hit: 83.0
+Precision: 4.68%	Recall: 6.02%	F1-Score: 5.27%
+
+########################################
+Test - Full - 04/02 01:13
+####################
+Prediction: 1788	Reality: 1378	Hit: 83.0
+Precision: 4.64%	Recall: 6.02%	F1-Score: 5.24%
+
+########################################
+Test - Full - 04/02 01:14
+####################
+Prediction: 1752	Reality: 1378	Hit: 81.0
+Precision: 4.62%	Recall: 5.88%	F1-Score: 5.18%
+
+########################################
+Test - Full - 04/02 01:15
+####################
+Prediction: 1778	Reality: 1378	Hit: 83.0
+Precision: 4.67%	Recall: 6.02%	F1-Score: 5.26%
+
+########################################
+Test - Full - 04/02 01:16
+####################
+Prediction: 1779	Reality: 1378	Hit: 83.0
+Precision: 4.67%	Recall: 6.02%	F1-Score: 5.26%
+
+########################################
+Test - Full - 04/02 01:18
+####################
+Prediction: 2186	Reality: 1378	Hit: 86.0
+Precision: 3.93%	Recall: 6.24%	F1-Score: 4.83%
+
+########################################
+Test - Full - 04/02 01:19
+####################
+Prediction: 2328	Reality: 1378	Hit: 95.0
+Precision: 4.08%	Recall: 6.89%	F1-Score: 5.13%
+
+########################################
+Test - Full - 04/02 01:20
+####################
+Prediction: 1656	Reality: 1378	Hit: 78.0
+Precision: 4.71%	Recall: 5.66%	F1-Score: 5.14%
+
+########################################
+Test - Full - 04/02 01:22
+####################
+Prediction: 2780	Reality: 1378	Hit: 101.0
+Precision: 3.63%	Recall: 7.33%	F1-Score: 4.86%
+
+########################################
+Test - Full - 04/02 01:23
+####################
+Prediction: 2742	Reality: 1378	Hit: 101.0
+Precision: 3.68%	Recall: 7.33%	F1-Score: 4.90%
+
+########################################
+Test - Full - 04/02 01:24
+####################
+Prediction: 2655	Reality: 1378	Hit: 100.0
+Precision: 3.77%	Recall: 7.26%	F1-Score: 4.96%
+
+########################################
+Test - Full - 04/02 01:26
+####################
+Prediction: 2486	Reality: 1378	Hit: 99.0
+Precision: 3.98%	Recall: 7.18%	F1-Score: 5.12%
+
+########################################
+Test - Full - 04/02 01:27
+####################
+Prediction: 2203	Reality: 1378	Hit: 89.0
+Precision: 4.04%	Recall: 6.46%	F1-Score: 4.97%
+
+########################################
+Test - Full - 04/02 01:28
+####################
+Prediction: 1957	Reality: 1378	Hit: 83.0
+Precision: 4.24%	Recall: 6.02%	F1-Score: 4.98%
+
+########################################
+Test - Full - 04/02 01:29
+####################
+Prediction: 1458	Reality: 1378	Hit: 68.0
+Precision: 4.66%	Recall: 4.93%	F1-Score: 4.80%
+
+########################################
+Test - Full - 04/02 01:31
+####################
+Prediction: 1538	Reality: 1378	Hit: 74.0
+Precision: 4.81%	Recall: 5.37%	F1-Score: 5.08%
+
+########################################
+Test - Full - 04/02 01:32
+####################
+Prediction: 1216	Reality: 1378	Hit: 68.0
+Precision: 5.59%	Recall: 4.93%	F1-Score: 5.24%
+
+########################################
+Test - Full - 04/02 01:34
+####################
+Prediction: 1950	Reality: 1378	Hit: 92.0
+Precision: 4.72%	Recall: 6.68%	F1-Score: 5.53%
+
+########################################
+Test - Full - 04/02 01:35
+####################
+Prediction: 1835	Reality: 1378	Hit: 89.0
+Precision: 4.85%	Recall: 6.46%	F1-Score: 5.54%
+
+########################################
+Test - Full - 04/02 01:37
+####################
+Prediction: 2008	Reality: 1378	Hit: 93.0
+Precision: 4.63%	Recall: 6.75%	F1-Score: 5.49%
+
+########################################
+Test - Full - 04/02 01:38
+####################
+Prediction: 2022	Reality: 1378	Hit: 94.0
+Precision: 4.65%	Recall: 6.82%	F1-Score: 5.53%
+
+########################################
+Test - Full - 04/02 01:39
+####################
+Prediction: 2064	Reality: 1378	Hit: 95.0
+Precision: 4.60%	Recall: 6.89%	F1-Score: 5.52%
+
+########################################
+Test - Full - 04/02 01:40
+####################
+Prediction: 2046	Reality: 1378	Hit: 94.0
+Precision: 4.59%	Recall: 6.82%	F1-Score: 5.49%
+
+########################################
+Test - Full - 04/02 01:42
+####################
+Prediction: 1971	Reality: 1378	Hit: 92.0
+Precision: 4.67%	Recall: 6.68%	F1-Score: 5.49%
+
+########################################
+Test - Full - 04/02 01:44
+####################
+Prediction: 2053	Reality: 1378	Hit: 94.0
+Precision: 4.58%	Recall: 6.82%	F1-Score: 5.48%
+
+########################################
+Test - Full - 04/02 01:46
+####################
+Prediction: 1984	Reality: 1378	Hit: 92.0
+Precision: 4.64%	Recall: 6.68%	F1-Score: 5.47%
+
+########################################
+Test - Full - 04/02 01:47
+####################
+Prediction: 1981	Reality: 1378	Hit: 93.0
+Precision: 4.69%	Recall: 6.75%	F1-Score: 5.54%
+
+########################################
+Test - Full - 04/02 01:49
+####################
+Prediction: 1939	Reality: 1378	Hit: 91.0
+Precision: 4.69%	Recall: 6.60%	F1-Score: 5.49%
+
+########################################
+Test - Full - 04/02 12:18
+####################
+Prediction: 3068	Reality: 1378	Hit: 115.0
+Precision: 3.75%	Recall: 8.35%	F1-Score: 5.17%
+
+########################################
+Test - Full - 04/02 12:20
+####################
+Prediction: 2769	Reality: 1378	Hit: 112.0
+Precision: 4.04%	Recall: 8.13%	F1-Score: 5.40%
+
+########################################
+Test - Full - 04/02 12:22
+####################
+Prediction: 2471	Reality: 1378	Hit: 105.0
+Precision: 4.25%	Recall: 7.62%	F1-Score: 5.46%
+
+########################################
+Test - Full - 04/02 12:37
+####################
+Prediction: 2391	Reality: 1378	Hit: 104.0
+Precision: 4.35%	Recall: 7.55%	F1-Score: 5.52%
+
+########################################
+Test - Full - 04/02 12:39
+####################
+Prediction: 1943	Reality: 1378	Hit: 90.0
+Precision: 4.63%	Recall: 6.53%	F1-Score: 5.42%
+
+########################################
+Test - Full - 04/02 12:54
+####################
+Prediction: 2009	Reality: 1378	Hit: 91.0
+Precision: 4.53%	Recall: 6.60%	F1-Score: 5.37%
+
+########################################
+Test - Full - 04/02 12:59
+####################
+Prediction: 928	Reality: 1378	Hit: 58.0
+Precision: 6.25%	Recall: 4.21%	F1-Score: 5.03%
+
+########################################
+Test - Full - 04/02 13:00
+####################
+Prediction: 512	Reality: 1378	Hit: 25.0
+Precision: 4.88%	Recall: 1.81%	F1-Score: 2.65%
+
+########################################
+Test - Full - 04/02 13:10
+####################
+Prediction: 1943	Reality: 1378	Hit: 90.0
+Precision: 4.63%	Recall: 6.53%	F1-Score: 5.42%
+
+####################
