@@ -1,10 +1,11 @@
 #coding=utf-8
 
 from sqlalchemy import Column, Integer, Float, Boolean
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 from helper import memoized
-from .db import s, engine
+from .db import engine
 
 Base = declarative_base()
 
@@ -26,13 +27,14 @@ class Brand(Base):
     idle = Column(Boolean, default=False)
 
 
-def init(session):
+def init(engine=engine):
+    s = sessionmaker(bind=engine)()
     Base.metadata.create_all(engine)
-    rv = session.execute('select distinct user_id from data')
+    rv = s.execute('select distinct user_id from data')
     obj = map(lambda x: Customer(id=x[0]), rv.fetchall())
     s.add_all(obj)
 
-    rv = session.execute('select distinct brand_id from data')
+    rv = s.execute('select distinct brand_id from data')
     obj = map(lambda x: Brand(id=x[0]), rv.fetchall())
     s.add_all(obj)
 

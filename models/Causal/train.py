@@ -2,11 +2,11 @@
 
 from datetime import date, timedelta
 
-from sqlalchemy import func
+from sqlalchemy import func, desc
 
-from models import Data
+from models.data import Data
 from .db import s
-from .train_model import Customer, Brand
+from .model import Customer, Brand
 from helper import record_aggregate
 
 
@@ -38,18 +38,15 @@ def skewed_mean(scores):
 
 
 class Trainer:
-    def __init__(self, ext_session, **kwargs):
-        self.parameters = {'inv': INV,
-                           'session': s,
-                           'end_date': date(2012, 8, 16)}
-        self.parameters.update(kwargs)
+    def __init__(self, ext_session, session=s, inv=INV):
+        self.parameters = {'inv': INV}
 
-        self.session = self.parameters['session']
+        self.session = session
 
-        self.end_date = self.parameters['end_date']
+        self.end_date = ext_session.query(Data.time).order_by(desc(Data.time)).first()[0]
         self.length = self.end_date - START_DATE
 
-        inv = self.parameters['inv']
+        self.inv = inv
         self.mean_coe = 1.0 / (inv - 1)
         self.div = self.length.days / inv
         self.breaks = [START_DATE + i * timedelta(inv) for i in range(self.div + 1)]

@@ -1,7 +1,7 @@
 #coding=utf-8
 
 import Causal
-from Data import Data
-from StaticData import StaticData
+from data import Data
+from static import StaticData
 
 models = {'Causal': Causal}
