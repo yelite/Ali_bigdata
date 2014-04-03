@@ -4,14 +4,14 @@ from datetime import date, timedelta
 
 from sqlalchemy import func
 
-from model import Data
+from models import Data
 from .db import s
 from .train_model import Customer, Brand
 from helper import record_aggregate
 
 
 START_DATE = date(2012, 4, 15)
-INV = 14
+INV = 28
 
 
 def calculate_cp_score(data):
@@ -39,18 +39,12 @@ def skewed_mean(scores):
 
 class Trainer:
     def __init__(self, ext_session, **kwargs):
-        brands = s.query(Brand).all()
-        self.brands = {x.id: x for x in brands}
-        self.customers = s.query(Customer).all()
-        self.data_query = ext_session.query(Data)
-        self.ext_session = ext_session
-
         self.parameters = {'inv': INV,
+                           'session': s,
                            'end_date': date(2012, 8, 16)}
-        self.set_parameters(**kwargs)
-
-    def set_parameters(self, **kwargs):
         self.parameters.update(kwargs)
+
+        self.session = self.parameters['session']
 
         self.end_date = self.parameters['end_date']
         self.length = self.end_date - START_DATE
@@ -59,6 +53,12 @@ class Trainer:
         self.mean_coe = 1.0 / (inv - 1)
         self.div = self.length.days / inv
         self.breaks = [START_DATE + i * timedelta(inv) for i in range(self.div + 1)]
+
+        brands = self.session.query(Brand).all()
+        self.brands = {x.id: x for x in brands}
+        self.customers = self.session.query(Customer).all()
+        self.data_query = ext_session.query(Data)
+        self.ext_session = ext_session
 
     def train_customer(self, customer):
         records = list()
@@ -79,7 +79,7 @@ class Trainer:
         customer.purchase = 30.0 * s / self.length.days
 
         cp_scores = map(calculate_cp_score, zip(data[1:], data))
-        customer.click_purchase = skewed_mean(cp_scores)
+        customer.click_purchase = sum(cp_scores)/len(cp_scores)
 
     def train_brand(self, brand):
         data = list()
@@ -99,7 +99,7 @@ class Trainer:
         print('Customer parameter trained')
         map(self.train_brand, self.brands.values())
         print('Brand parameter trained')
-        s.commit()
+        self.session.commit()
 
 
 def train(session):

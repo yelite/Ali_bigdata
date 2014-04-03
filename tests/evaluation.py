@@ -6,7 +6,7 @@ FILE_DIC = os.path.split(os.path.realpath(__file__))[0]
 
 
 def read_result():
-    f = open(os.path.join(FILE_DIC, 'real.txt'))
+    f = open(os.path.join(FILE_DIC, 'data/real.txt'))
     rv = {}
     count = 0
     for l in f:
@@ -53,3 +53,4 @@ def evaluate(prediction, flag='full'):
                    'score': f1_score}
 
     return report_data
+

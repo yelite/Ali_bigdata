@@ -2,7 +2,6 @@
 
 import time
 
-from models.Trivial.model import Customer
 from db import s
 from models import models
 
@@ -22,7 +21,7 @@ def write_file(name, rv):
 
 def main():
     t = models['Causal']
-    rv = t.Predictor(s, test=True).predict()
+    rv = t.Predictor(s).predict()
 
     p_count = 0
     for id, brands in rv:

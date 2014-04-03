@@ -1,14 +1,16 @@
 #coding=utf-8
 
 import os
-from db import s
-from model import Data
-from .train_model import Brand, Customer
-from .train import INV, START_DATE
 from datetime import timedelta
-from helper import root_dic
-from helper import record_aggregate
+
 from sqlalchemy import desc
+
+from db import s
+from models import Data
+from models import StaticData
+from .train_model import Brand, Customer
+from .train import INV
+from helper import record_aggregate
 
 
 class Predictor:
@@ -16,34 +18,15 @@ class Predictor:
         self.ext_session = session
         self.end_date = session.query(Data.time).order_by(desc(Data.time)).first()[0]
         self.test = test
-        self.load()
 
-    def load(self):
         brands = s.query(Brand).all()
         self.brands = {x.id: x for x in brands}
         customers = s.query(Customer).all()
         self.customers = {x.id: x for x in customers}
         self.data_query = self.ext_session.query(Data)
 
-        name = 'data/user_brand{}.txt'.format('_test' if self.test else '')
-        self.user_brand = self.init_user_brand(os.path.join(root_dic, name))
-
-    @staticmethod
-    def init_user_brand(dic):
-        f = open(dic)
-        rv = {}
-        count = 0
-        for l in f:
-            name, brands = l.split('\t')
-            brands = brands.strip()
-            if not brands:
-                rv[int(name)] = set()
-                continue
-            brands = map(int, brands.split(','))
-            count += len(brands)
-            rv[int(name)] = set(brands)
-        f.close()
-        return rv
+        self.static_data = StaticData(test=test)
+        self.user_brand = self.static_data.user_brand
 
     def predict(self):
         self.count = 0
@@ -67,7 +50,7 @@ class Predictor:
         return c.id, brands
 
     def _predict_idle(self, c, brand_ids):
-        dt = timedelta(2*INV)
+        dt = timedelta(INV)
         brands = []
         score = {}
         for b in brand_ids:
@@ -87,7 +70,7 @@ class Predictor:
         return c.id, brands
 
     def calculate_score(self, c, brand):
-        dt = timedelta(4*INV)
+        dt = timedelta(2*INV)
         cp = c.click_purchase
         pp = brand.purchase_purchase
 
@@ -99,12 +82,12 @@ class Predictor:
         data = record_aggregate(history, unique_brand=True)
         if data[3]+data[2]-data[1]>0:
             return 1000
-        return cp*data[0] + 12*pp*data[1] + cp*pp*data[0]*25
+        return cp*data[0] + 2*pp*data[1] + cp*pp*data[0]
 
     @staticmethod
     def judge_purchase(customer, brand_score):
-        limit = int(customer.purchase**1.25+1.4*customer.purchase)+1
-        brands = [k for k,v in brand_score.items() if v > 2]
+        limit = int(customer.purchase)*5+1
+        brands = [k for k,v in brand_score.items() if v > 0.13]
         brands = sorted(brands, key=brand_score.get, reverse=True)
         return brands[:limit]
 

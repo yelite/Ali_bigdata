@@ -2,13 +2,9 @@
 
 from datetime import date
 
-import base
 from evaluation import evaluate
 from models.Trivial.predict import predict
 from report import report
-
-
-base.static_data = base.StaticData(test=True)
 
 
 def test_semi_training(test_session):

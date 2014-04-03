@@ -5,7 +5,7 @@ FILE_DIC = os.path.split(os.path.realpath(__file__))[0]
 import time
 
 def report(report_data, flag=''):
-    report_file = open(os.path.join(FILE_DIC,'test_report.txt'),
+    report_file = open(os.path.join(FILE_DIC,'test_report.log'),
                        mode='a')
 
     delimiter = '#' * 20
