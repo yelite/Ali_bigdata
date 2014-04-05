@@ -21,8 +21,7 @@ def write_file(name, rv):
 
 def main():
     target = {'Simple': 10.8,
-              'Causal': 1.9,
-              'CF': 0.4}
+              'Causal': 2.33}
     all = [models[k].Predictor(s).predict(threshold=v)
            for k, v in target.items()]
 

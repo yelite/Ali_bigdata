@@ -29,7 +29,7 @@ def check(p_rv, c_rv):
     return count
 
 
-def evaluate(p_rv, flag='full'):
+def evaluate(p_rv):
     print('Evaluating...')
     p_count = 0
     for brands in p_rv.values():
@@ -51,4 +51,23 @@ def evaluate(p_rv, flag='full'):
                    'score': f1_score}
 
     return report_data
+
+
+def evaluate_curve(p_rv):
+    r_rv = read_result()[1]
+    hit_val = []
+    miss_val = []
+    for user, brands in p_rv.items():
+        for brand, score in brands.items():
+            if score > 40:
+                score = 40
+            if brand in r_rv[user]:
+                hit_val.append(score)
+            else:
+                miss_val.append(score)
+
+    return hit_val, miss_val
+
+
+
 
