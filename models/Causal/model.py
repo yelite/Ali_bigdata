@@ -6,6 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from helper import memoized
 from .db import engine
+from db import s as data_session
 
 Base = declarative_base()
 
@@ -29,14 +30,14 @@ class Brand(Base):
 
 def init(engine=engine):
     s = sessionmaker(bind=engine)()
-    Base.metadata.create_all(engine)
-    rv = s.execute('select distinct user_id from data')
-    obj = map(lambda x: Customer(id=x[0]), rv.fetchall())
-    s.add_all(obj)
-
-    rv = s.execute('select distinct brand_id from data')
-    obj = map(lambda x: Brand(id=x[0]), rv.fetchall())
-    s.add_all(obj)
+    # Base.metadata.create_all(engine)
+    # rv = data_session.execute('select distinct user_id from data')
+    # obj = map(lambda x: Customer(id=x[0]), rv.fetchall())
+    # s.add_all(obj)
+    #
+    # rv = data_session.execute('select distinct brand_id from data')
+    # obj = map(lambda x: Brand(id=x[0]), rv.fetchall())
+    # s.add_all(obj)
 
     s.commit()
 

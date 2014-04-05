@@ -15,5 +15,5 @@ Session = sessionmaker(bind=engine)
 partial_session = Session()
 
 def full_test(session):
-    rv = Predictor(session, test=True).predict(threshold=0.8)
+    rv = Predictor(session, test=True).predict()
     return rv
