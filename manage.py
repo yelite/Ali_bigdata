@@ -13,4 +13,4 @@ def train_model(name='Causal'):
 
 
 if __name__ == '__main__':
-    train_model()
+    init_model()

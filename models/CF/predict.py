@@ -51,7 +51,7 @@ class Predictor(BasePredictor):
                        for k in similar_users}
         users_score.pop(user_id)
         for u, v in users_score.items():
-            if v < 0.2:
+            if v < 0.45:
                 continue
             new_brands = self.user_brand.get(u) - brands
             for b in new_brands:

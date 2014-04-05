@@ -29,13 +29,11 @@ def check(p_rv, c_rv):
     return count
 
 
-def evaluate(prediction, flag='full'):
+def evaluate(p_rv, flag='full'):
     print('Evaluating...')
     p_count = 0
-    p_rv = {}
-    for id, brands in prediction:
+    for brands in p_rv.values():
         p_count += len(brands)
-        p_rv[id] = set(brands)
 
     r_count, r_rv = read_result()
 

@@ -9,22 +9,31 @@ from models import models
 
 def write_file(name, rv):
     f = open('output/{}.txt'.format(name), mode='w')
-    for l in rv:
-        if not l[1]:
+    for k, v in rv.items():
+        if not v:
             continue
-        name = map(str, l[1])
-        id = str(l[0])
+        name = map(str, v)
+        id = str(k)
         f.write(id+'\t'+','.join(name))
         f.write('\n')
     f.close()
 
 
 def main():
-    t = models['Causal']
-    rv = t.Predictor(s).predict()
+    target = {'Simple': 10.8,
+              'Causal': 1.9,
+              'CF': 0.4}
+    all = [models[k].Predictor(s).predict(threshold=v)
+           for k, v in target.items()]
+
+    rv = {}
+    for r in all:
+        for k, v in r.items():
+            rv.setdefault(k, set())
+            rv[k] |= v
 
     p_count = 0
-    for id, brands in rv:
+    for id, brands in rv.items():
         p_count += len(brands)
 
     print('Prediction: {}'.format(p_count))

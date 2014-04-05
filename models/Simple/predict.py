@@ -25,10 +25,6 @@ class Predictor(BasePredictor):
 
         self.all = float(len(self.customers.keys()))
 
-        self.static_data = StaticData(test=test)
-        self.user_brand = self.static_data.user_brand
-        self.brand_user = self.static_data.brand_user
-
     def predict(self, threshold=14):
         self.count = 0
         suggestion = self.calculate_score()
@@ -59,14 +55,14 @@ class Predictor(BasePredictor):
                                          Data.brand_id == brand).all()
 
         score = 0
-        score_table = {0: 0.1,
+        score_table = {0: 0.15,
                        1: 0.7,
-                       2: 1,
-                       3: 1}
+                       2: 1.2,
+                       3: 0.8}
 
         all = record_aggregate(history, unique_date=True)
         if all[3] > 1:
-            score_table[3] = 3
+            score_table[3] = 4
 
         for record in history:
             base_score = score_table[record.action]
