@@ -30,8 +30,7 @@ class Predictor(BasePredictor):
         self.begin()
         suggestion = self.calculate_score()
 
-        rv = {k.id: self._judge_purchase(k, v, threshold=threshold)
-              for k, v in suggestion.items()}
+        rv = self.judge_purchase(suggestion, threshold)
 
         p_count = 0
         for id, brands in rv.items():
@@ -41,8 +40,7 @@ class Predictor(BasePredictor):
         return rv
 
     def calculate_score(self):
-        return {k: self._predict(k) for k in self.customers.values()}
-
+        return {k.id: self._predict(k) for k in self.customers.values()}
 
     def _predict(self, c):
         brand_ids = self.user_brand.get(c.id, frozenset())
@@ -74,7 +72,7 @@ class Predictor(BasePredictor):
         o_brands = o_brands[:2]
         brands.extend(o_brands)
         brand_score = {k: 1000 for k in brands}
-        return c, brand_score
+        return brand_score
 
     def _calculate_score(self, c, brand):
         dt = timedelta(2 * INV)
@@ -91,12 +89,16 @@ class Predictor(BasePredictor):
             return 1000
         return cp * data[0] + 2.8 * pp * data[1] + cp * pp * data[0] * 1.4
 
-    @staticmethod
-    def _judge_purchase(customer, brand_score, threshold):
-        limit = int(customer.purchase) * 5 + 1
+    def _judge_purchase(self, user_id, brand_score, threshold):
+        customer = self.customers.get(user_id)
+        limit = int(customer.purchase * 2 / threshold) + 1
         brands = [k for k, v in brand_score.items() if v > threshold]
         brands = sorted(brands, key=brand_score.get, reverse=True)
         return set(brands[:limit])
+
+    def judge_purchase(self, suggestion, threshold):
+        return {k: self._judge_purchase(k, v, threshold=threshold)
+                for k, v in suggestion.items()}
 
     def done(self):
         self.count += 1
