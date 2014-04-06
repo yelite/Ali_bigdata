@@ -1,9 +1,10 @@
 #coding=utf-8
 
 
+from sqlalchemy import desc
+
 from data import Data
 from static import StaticData
-from sqlalchemy import desc
 
 
 class BasePredictor(object):

@@ -1,13 +1,7 @@
 #coding=utf-8
 
-import os
-from datetime import timedelta
-
-from sqlalchemy import desc
-
 from .db import s
 from models.data import Data
-from models.static import StaticData
 from models.base import BasePredictor
 from .model import Brand, Customer
 from helper import record_aggregate
@@ -25,7 +19,7 @@ class Predictor(BasePredictor):
 
         self.all = float(len(self.customers.keys()))
 
-    def predict(self, threshold=14):
+    def predict(self, threshold=15):
         self.count = 0
         suggestion = self.calculate_score()
 
@@ -55,19 +49,20 @@ class Predictor(BasePredictor):
                                          Data.brand_id == brand).all()
 
         score = 0
-        score_table = {0: 0.15,
-                       1: 0.7,
+        score_table = {0: 0.1,
+                       1: 1,
                        2: 1.2,
-                       3: 0.8}
+                       3: 1.5}
 
         all = record_aggregate(history, unique_date=True)
-        if all[3] > 1:
-            score_table[3] = 4
+        if all[1] > 1:
+            score_table[1] = 3.5
+            score_table[2] = score_table[3] = 0
 
         for record in history:
             base_score = score_table[record.action]
             time_coe = float((record.time - self.start_date).days / 7 + 1)
-            bias_coe = float(self.length / 7 + 1)*(self.length / 7 + 2)/2
-            score += time_coe/bias_coe*base_score
+            bias_coe = float(self.length / 7 + 1) * (self.length / 7 + 2) / 2
+            score += time_coe / bias_coe * base_score
 
-        return score*100
+        return score * 100

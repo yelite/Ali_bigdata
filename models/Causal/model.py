@@ -4,9 +4,8 @@ from sqlalchemy import Column, Integer, Float, Boolean
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-from helper import memoized
 from .db import engine
-from db import s as data_session
+
 
 Base = declarative_base()
 

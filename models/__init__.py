@@ -6,7 +6,6 @@ import CF
 import Simple
 from data import Data
 from static import StaticData
-from db import s as data_session
 
 models = {'Causal': Causal,
           'LR': LR,

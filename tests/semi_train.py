@@ -1,23 +1,14 @@
 #coding=utf-8
 
 
-from datetime import date, timedelta
-
-from _db import Session
-from models.Trivial.model import Customer, Brand
-from models import Data
-from helper import record_aggregate
+from _db import s
+from models.LR.train import DataTrainer
 
 
 def train():
-    # TODO save memory
-    brands = session.query(Brand).all()
-    map(train_brand, brands)
-
-    customers = session.query(Customer).all()
-    map(train_customer, customers)
-
-    session.commit()
+    t = DataTrainer(s, test=True)
+    t.train()
+    t.freeze()
 
 
 if __name__ == "__main__":

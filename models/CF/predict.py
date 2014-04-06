@@ -1,16 +1,8 @@
 #coding=utf-8
 
-import os
-from datetime import timedelta
-
-from sqlalchemy import desc
-
 from .db import s
-from models.data import Data
-from models.static import StaticData
 from .model import Brand, Customer
 from models.base import BasePredictor
-from helper import record_aggregate
 
 
 class Predictor(BasePredictor):
@@ -51,7 +43,7 @@ class Predictor(BasePredictor):
                        for k in similar_users}
         users_score.pop(user_id)
         for u, v in users_score.items():
-            if v < 0.45:
+            if v < 0.4:
                 continue
             new_brands = self.user_brand.get(u) - brands
             for b in new_brands:

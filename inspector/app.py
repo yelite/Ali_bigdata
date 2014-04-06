@@ -9,6 +9,8 @@ from models.Trivial.model import Brand
 app = Flask(__name__)
 
 app.route('/purchase/brand/<id>')
+
+
 def brand_pur_info(id):
     s = Session()
     b = s.query(Brand).get(id)

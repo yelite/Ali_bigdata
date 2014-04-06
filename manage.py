@@ -8,9 +8,9 @@ def init_model():
     map(lambda x: x.init(s), models.values())
 
 
-def train_model(name='Causal'):
+def train_model(name='LR'):
     models[name].train(s)
 
 
 if __name__ == '__main__':
-    init_model()
+    train_model()

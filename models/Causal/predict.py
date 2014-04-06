@@ -1,13 +1,9 @@
 #coding=utf-8
 
-import os
 from datetime import timedelta
-
-from sqlalchemy import desc
 
 from .db import s
 from models.data import Data
-from models.static import StaticData
 from models.base import BasePredictor
 from .model import Brand, Customer
 from .train import INV
@@ -26,7 +22,7 @@ class Predictor(BasePredictor):
 
         self.all = float(len(self.customers.keys()))
 
-    def predict(self, threshold=1):
+    def predict(self, threshold=5):
         self.begin()
         suggestion = self.calculate_score()
 
@@ -85,8 +81,8 @@ class Predictor(BasePredictor):
                                          Data.time <= self.end_date).all()
 
         data = record_aggregate(history, unique_brand=True)
-        if data[3] + data[2] - data[1] > 0:
-            return 1000
+        if data[3] - data[1] > 0:
+            return 100
         return cp * data[0] + 2.8 * pp * data[1] + cp * pp * data[0] * 1.4
 
     def _judge_purchase(self, user_id, brand_score, threshold):
@@ -100,8 +96,4 @@ class Predictor(BasePredictor):
         return {k: self._judge_purchase(k, v, threshold=threshold)
                 for k, v in suggestion.items()}
 
-    def done(self):
-        self.count += 1
-        if self.count % 128 == 0:
-            print self.count / self.all
 

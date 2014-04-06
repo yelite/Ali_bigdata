@@ -1,8 +1,9 @@
 #coding=utf-8
 
 
-from helper import root_dic
 import os
+
+from helper import root_dic
 
 
 class StaticData:

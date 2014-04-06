@@ -17,7 +17,7 @@ INV = 28
 def calculate_cp_score(data):
     new, old = data
     if old[0] + 2 * new[0] == 0:
-        return new[1]/3.0
+        return new[1] / 3.0
     return 3.0 * new[1] / (old[0] + 2 * new[0])
 
 
@@ -25,7 +25,7 @@ def calculate_pp_score(data):
     new, old = data
     if old == 0:
         return 0
-    return new/float(old)
+    return new / float(old)
 
 
 def skewed_mean(scores):
@@ -76,7 +76,7 @@ class Trainer:
         customer.purchase = 30.0 * s / self.length.days
 
         cp_scores = map(calculate_cp_score, zip(data[1:], data))
-        customer.click_purchase = sum(cp_scores)/len(cp_scores)
+        customer.click_purchase = sum(cp_scores) / len(cp_scores)
 
     def train_brand(self, brand):
         data = list()
@@ -87,7 +87,7 @@ class Trainer:
                                                                    Data.time < self.breaks[i + 1]).one()
             data.append(t[0])
         pp_scores = map(calculate_pp_score, zip(data[1:], data))
-        brand.purchase_purchase = sum(pp_scores)/len(pp_scores)
+        brand.purchase_purchase = sum(pp_scores) / len(pp_scores)
         if brand.purchase_purchase == 0:
             brand.idle = True
 
