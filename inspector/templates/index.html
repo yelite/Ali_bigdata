@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Data Inspector</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" type="text/css"/>
+    <link rel="icon" type="img/ico" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
-
+<div id="out-wrapper">
+    <div class="col-1 sel">
+        <input type="text" name="filter-uid">
+        <select id="uid" name="uid" size="25">
+        </select>
+    </div>
+    <div class="col-1 sel">
+        <input type="text" name="filter-bid">
+        <select id="bid" name="bid" size="25">
+        </select>
+    </div>
+    <div id="plot" class="col-6"></div>
+</div>
+<script src="{{ url_for('static', filename='bower_components/better-dom/dist/better-dom.js') }}"></script>
+<script src="{{ url_for('static', filename='xhr.js') }}"></script>
+<script src="http://code.highcharts.com/adapters/standalone-framework.js"></script>
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
 </body>
 </html>
