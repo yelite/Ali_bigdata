@@ -33,6 +33,13 @@ def test_lr_full_training(test_session):
     print(report_static_test(report_data, flag='Full'))
 
 
+def test_rf_full_training(test_session):
+    m = models['RandomForest']
+    rv = m.Predictor(test_session, test=True).predict()
+    report_data = evaluate(rv)
+    print(report_static_test(report_data, flag='Full'))
+
+
 def test_mixed_full_training(test_session):
     target = {'Simple': 20,
               'Causal': 1.4,

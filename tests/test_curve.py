@@ -8,9 +8,8 @@ from evaluation import evaluate_curve as evaluate
 from models import models
 
 
-def draw_density(data, scale):
+def draw_density(data, xs):
     density = gaussian_kde(data)
-    xs = np.linspace(0, scale, scale * 100)
     density.covariance_factor = lambda: 0.01
     density._compute_covariance()
     plt.plot(xs, density(xs))
@@ -24,11 +23,13 @@ def rev_cum(xs, data):
     return np.array(rv)
 
 
-def check(session, p, scale=40):
+def check(session, p, scale=None):
+    if not scale:
+        scale = [0, 40]
     rv = p(session, test=True).calculate_score()
     hit_val, miss_val = evaluate(rv)
 
-    xs = np.linspace(0, scale, scale * 100)
+    xs = np.linspace(scale[0], scale[1], (scale[1]-scale[0]) * 100)
 
     all_val = hit_val[:]
     all_val.extend(miss_val)
@@ -37,9 +38,9 @@ def check(session, p, scale=40):
                for data in [hit_val, miss_val, all_val]]
 
     plt.subplot('221')
-    map(lambda x: draw_density(x, scale), [hit_val, miss_val, all_val])
+    map(lambda x: draw_density(x, xs), [hit_val, miss_val, all_val])
     plt.subplot('222')
-    draw_density(hit_val, scale)
+    plt.plot(xs, cum_val[2])
     plt.subplot('223')
     plt.plot(xs, np.divide(np.array(cum_val[0]),
                            np.array(cum_val[2])))
@@ -66,4 +67,9 @@ def test_causal_full_training(test_session):
 
 def test_lr_full_training(test_session):
     m = models['LR']
-    check(test_session, m.Predictor, scale=1)
+    check(test_session, m.Predictor, scale=[0.55,1])
+
+
+def test_rf_full_training(test_session):
+    m = models['RandomForest']
+    check(test_session, m.Predictor, scale=[0.4,1])
