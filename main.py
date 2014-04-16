@@ -19,7 +19,11 @@ def write_file(name, rv):
 
 
 def main():
-    target = {'LR': 0.65}
+    target = {'LR': 0.89,
+              'Simple': 13.4,
+              'Causal': 3.4,
+              'RandomForest': 0.24}
+    print(target.keys())
     all = [models[k].Predictor(s).predict(threshold=v)
            for k, v in target.items()]
 

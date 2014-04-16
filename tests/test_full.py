@@ -40,10 +40,17 @@ def test_rf_full_training(test_session):
     print(report_static_test(report_data, flag='Full'))
 
 
+def test_svm_full_training(test_session):
+    m = models['SVM']
+    rv = m.Predictor(test_session, test=True).predict()
+    report_data = evaluate(rv)
+    print(report_static_test(report_data, flag='Full'))
+
+
 def test_mixed_full_training(test_session):
-    target = {'Simple': 20,
-              'Causal': 1.4,
-              'CF': 0.4}
+    target = {'LR': 0.82,
+              'Simple': 18,
+              'Causal': 4}
 
     all = [models[k].Predictor(test_session, test=True).predict(threshold=v)
            for k, v in target.items()]

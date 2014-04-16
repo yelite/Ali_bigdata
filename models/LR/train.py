@@ -32,6 +32,9 @@ class Trainer:
     def train_brand(self, brand):
         brand.purchase = self.data_query.filter(Data.brand_id == brand.id,
                                                 Data.action == 1).count()
+        brand.click = self.data_query.filter(Data.brand_id == brand.id,
+                                                Data.action == 0).count()
+
 
     def train_all(self):
         map(self.train_customer, self.customers)
@@ -62,7 +65,7 @@ class DataTrainer:
         self.start_date = ext_session.query(Data.time).order_by(Data.time).first()[0]
         self.length = (self.end_date - self.start_date).days
 
-        self.static_data = StaticData(test=False)
+        self.static_data = StaticData(test=test)
         self.user_brand = self.static_data.user_brand
         self.brand_user = self.static_data.brand_user
 
@@ -115,45 +118,57 @@ class DataTrainer:
             for b in self.user_brand.get(u.id, []):
                 b = self.brands.get(b)
                 x = self._get_freeze_data_set(u, b)
-                X.append(x)
+                if x:
+                    X.append(x)
             self.done()
 
         return X
 
     def _get_freeze_data_set(self, c, b):
+        old_purchase = self.data_query.filter(Data.user_id == c.id,
+                                                  Data.brand_id == b.id,
+                                                  Data.action == 1,
+                                                  Data.time >= self.end_date - timedelta(INV),
+                                                  Data.time < self.end_date).order_by(desc(Data.time)).first()
+        if old_purchase:
+            t_limit = old_purchase.time
+        else:
+            t_limit = self.end_date - timedelta(INV)
+
         click = self.data_query.filter(Data.user_id == c.id,
                                        Data.brand_id == b.id,
                                        Data.action == 0,
-                                       Data.time > self.end_date - timedelta(INV),
+                                       Data.time > t_limit,
                                        Data.time <= self.end_date).count()
 
         cart = self.data_query.filter(Data.user_id == c.id,
                                       Data.brand_id == b.id,
                                       Data.action == 2 or Data.action == 3,
-                                      Data.time >= self.end_date - timedelta(INV),
+                                      Data.time >= t_limit,
                                       Data.time < self.end_date)
 
         cart = cart.order_by(desc(Data.time)).first()
-        if not cart:
-            f = 0
-        else:
-            p_after_c = self.data_query.filter(Data.user_id == c.id,
-                                               Data.brand_id == b.id,
-                                               Data.action == 1,
-                                               Data.time > cart.time,
-                                               Data.time <= self.end_date)
-            p_after_c = p_after_c.first()
-            f = 0 if p_after_c else 1
+        f = 1 if cart else 0
 
-        return [c.id, b.id, click, f, c.click, b.purchase]
+        return [c.id, b.id, click, f, c.click, c.purchase, b.purchase, b.purchase]
 
     def _get_data_set(self, c, b):
         x = []
         for i in range(self.length / INV - 1):
+            old_purchase = self.data_query.filter(Data.user_id == c.id,
+                                                  Data.brand_id == b.id,
+                                                  Data.action == 1,
+                                                  Data.time >= self.breaks[i],
+                                                  Data.time < self.breaks[i + 1]).order_by(desc(Data.time)).first()
+            if old_purchase:
+                t_limit = old_purchase.time
+            else:
+                t_limit = self.breaks[i]
+
             click = self.data_query.filter(Data.user_id == c.id,
                                            Data.brand_id == b.id,
                                            Data.action == 0,
-                                           Data.time >= self.breaks[i],
+                                           Data.time >= t_limit,
                                            Data.time < self.breaks[i + 1]).count()
 
             purchase = self.data_query.filter(Data.user_id == c.id,
@@ -167,22 +182,13 @@ class DataTrainer:
             cart = self.data_query.filter(Data.user_id == c.id,
                                           Data.brand_id == b.id,
                                           Data.action == 2 or Data.action == 3,
-                                          Data.time >= self.breaks[i],
+                                          Data.time >= t_limit,
                                           Data.time < self.breaks[i + 1])
 
             cart = cart.order_by(desc(Data.time)).first()
-            if not cart:
-                f = 0
-            else:
-                p_after_c = self.data_query.filter(Data.user_id == c.id,
-                                                   Data.brand_id == b.id,
-                                                   Data.action == 1,
-                                                   Data.time >= cart.time,
-                                                   Data.time < self.breaks[i + 1])
-                p_after_c = p_after_c.first()
-                f = 0 if p_after_c else 1
+            f = 1 if cart else 0
 
-            x.append([click, f, c.click, b.purchase, purchase])
+            x.append([click, f, c.click, c.purchase, b.click, b.purchase, purchase])
         return x
 
     def done(self):
@@ -192,7 +198,7 @@ class DataTrainer:
 
 
 def train(session):
-    # Trainer(session).train_all()
+    Trainer(session).train_all()
     t = DataTrainer(session)
     t.train()
     t.freeze()

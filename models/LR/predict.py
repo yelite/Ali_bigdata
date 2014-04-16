@@ -4,6 +4,7 @@ from datetime import timedelta
 import os
 
 from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 
 from .db import s
@@ -29,7 +30,11 @@ class Predictor(BasePredictor):
         self.breaks = [self.start_date + i * timedelta(INV)
                        for i in range(self.length / INV + 1)]
 
-        self.estimator = LogisticRegression(class_weight='auto')
+        self.scaler = MinMaxScaler()
+        self.estimator = LogisticRegression(penalty='l2',
+                                            fit_intercept=False,
+                                            C=0.5,
+                                            class_weight='auto')
         self.all = float(len(self.customers.keys()))
 
         if test:
@@ -39,20 +44,27 @@ class Predictor(BasePredictor):
 
         with open(os.path.join(self.path, 'data.txt')) as f:
             data = f.readlines()
-            self.data = np.array(map(lambda x: map(int, x.split('\t')), data))
+            buffer = np.array(map(lambda x: map(float, x.split('\t')), data))
+            self.data = np.ndarray(shape=buffer.shape,
+                                   dtype=np.float64,
+                                   buffer=buffer,
+                                   order='C')
 
         with open(os.path.join(self.path, 'freeze_data.txt')) as f:
             data = f.readlines()
-            self.freeze_data = np.array(map(lambda x: map(int, x.split('\t')), data))
-
+            buffer = np.array(map(lambda x: map(float, x.split('\t')), data))
+            self.freeze_data = np.ndarray(shape=buffer.shape,
+                                          dtype=np.float64,
+                                          buffer=buffer,
+                                          order='C')
         print('Training')
         self.begin()
         self.train()
         print('Done')
 
-    def predict(self, threshold=0.6):
+    def predict(self, threshold=0.5):
         suggestion = self.calculate_score()
-        rv = {k: {l for l, p in v.items() if p > threshold}
+        rv = {int(k): {int(l) for l, p in v.items() if p > threshold}
               for k, v in suggestion.items()}
 
         p_count = 0
@@ -66,7 +78,8 @@ class Predictor(BasePredictor):
         self.begin()
         data = self.freeze_data
 
-        output = self.estimator.predict_proba(data[:, 2:])[:, 1]
+        X = self.scaler.transform(data[:, 2:])
+        output = self.estimator.predict_proba(X)[:, 1]
         output = np.column_stack((data[:, :2], output))
         rv = {}
         for u_id, b_id, score in output:
@@ -77,6 +90,7 @@ class Predictor(BasePredictor):
 
     def train(self):
         X, y = self.data[..., :-1], self.data[..., -1]
+        X = self.scaler.fit_transform(X)
         print 'Fitting'
         self.estimator.fit(X, y)
         print 'Done'

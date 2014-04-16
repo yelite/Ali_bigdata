@@ -4,8 +4,8 @@ from datetime import date, timedelta
 
 from flask import Flask, jsonify, render_template, g
 
-from models.static import StaticData
-from models.base import Data
+from model import StaticData
+from model import Data
 from json_ import json_patch
 
 app = Flask(__name__)

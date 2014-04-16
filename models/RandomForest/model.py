@@ -28,13 +28,13 @@ class Brand(Base):
 
 def init(session, engine=engine):
     s = sessionmaker(bind=engine)()
-    Base.metadata.create_all(engine)
-    rv = session.execute('select distinct user_id from data')
-    obj = map(lambda x: Customer(id=x[0]), rv.fetchall())
-    s.add_all(obj)
-
-    rv = session.execute('select distinct brand_id from data')
-    obj = map(lambda x: Brand(id=x[0]), rv.fetchall())
-    s.add_all(obj)
+    # Base.metadata.create_all(engine)
+    # rv = session.execute('select distinct user_id from data')
+    # obj = map(lambda x: Customer(id=x[0]), rv.fetchall())
+    # s.add_all(obj)
+    #
+    # rv = session.execute('select distinct brand_id from data')
+    # obj = map(lambda x: Brand(id=x[0]), rv.fetchall())
+    # s.add_all(obj)
 
     s.commit()

@@ -13,4 +13,5 @@ def train_model(name='LR'):
 
 
 if __name__ == '__main__':
+    # init_model()
     train_model()

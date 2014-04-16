@@ -19,11 +19,11 @@ class Predictor(BasePredictor):
 
         self.all = float(len(self.customers.keys()))
 
-    def predict(self, threshold=15):
+    def predict(self, threshold=2.2):
         self.count = 0
         suggestion = self.calculate_score()
 
-        rv = {k: {l for l, s in v.items() if s > threshold}
+        rv = {int(k): {int(l) for l, s in v.items() if s > threshold}
               for k, v in suggestion.items()}
         p_count = 0
         for id, brands in rv.items():
@@ -49,20 +49,29 @@ class Predictor(BasePredictor):
                                          Data.brand_id == brand).all()
 
         score = 0
-        score_table = {0: 0.1,
-                       1: 1,
-                       2: 1.2,
-                       3: 1.5}
+        default_table = {0: 1,
+                         1: 15,
+                         2: 10,
+                         3: 20}
 
         all = record_aggregate(history, unique_date=True)
         if all[1] > 1:
-            score_table[1] = 3.5
-            score_table[2] = score_table[3] = 0
+            default_table[1] = 25
+            default_table[2] = default_table[3] = 6
+
+        score_table = default_table.copy()
 
         for record in history:
             base_score = score_table[record.action]
+
+            # Dynamic suppressing
+            if record.action == 2 or record.action == 3:
+                score_table[1] -= score_table[record.action]
+            elif record.action == 1:
+                score_table[1] = default_table[1]
+
             time_coe = float((record.time - self.start_date).days / 7 + 1)
             bias_coe = float(self.length / 7 + 1) * (self.length / 7 + 2) / 2
             score += time_coe / bias_coe * base_score
 
-        return score * 100
+        return score

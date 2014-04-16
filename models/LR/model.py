@@ -16,6 +16,7 @@ class Customer(Base):
     id = Column(Integer, primary_key=True)
     idle = Column(Boolean, default=False)
     click = Column(Integer, default=0)
+    purchase = Column(Integer, default=0)
 
 
 class Brand(Base):
@@ -24,6 +25,7 @@ class Brand(Base):
     id = Column(Integer, primary_key=True)
     idle = Column(Boolean, default=False)
     purchase = Column(Integer, default=0)
+    click = Column(Integer, default=0)
 
 
 def init(session, engine=engine):
